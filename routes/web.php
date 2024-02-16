@@ -13,9 +13,20 @@ use Illuminate\Support\Facades\Request;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
+// we can physically add data to the view by adding a second argument to the view function
 Route::get('/', function () {
-    return view('welcome');
+    return view('listings', [
+        'heading' => 'Latest Listings',
+        'listings' => [
+            'title' => 'Job Listing 1',
+            'description' => 'This is a description of job 1'
+        ],
+        [
+            'title' => 'Job Listing 1',
+            'description' => 'This is a description of job 1'
+        ]
+
+    ]);
 });
 
 // different ways to create a route:
