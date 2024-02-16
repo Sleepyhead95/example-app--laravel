@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Request;
+use App\Models\Listing;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,28 +14,18 @@ use Illuminate\Support\Facades\Request;
 |
 */
 // we can physically add data to the view by adding a second argument to the view function
+// All Listings:
 Route::get('/', function () {
     return view('listings', [
         'heading' => 'Latest Listings',
-        'listings' => [
-            'title' => 'Job Listing 1',
-            'description' => 'This is a description of job 1'
-        ],
-        [
-            'title' => 'Job Listing 1',
-            'description' => 'This is a description of job 1'
-        ]
+        'listings' => Listing::all()
 
     ]);
 });
 
-// different ways to create a route:
-// Route::get('/hello', function () {
-//     return response('<h1>Hello World</h1>', 200)
-//         ->header('Content-Type', 'text/html')
-//         ->header('foo', 'bar');
-// });
-
-// Route::get('/search', function(Request $request) {
-//     return $request->name . "" . $request->city;
-// });
+// Single Listing:
+Route::get('/listings/{id}', function ($id) {
+    return view('listing', [
+        'listing' => Listing::find($id)
+    ]);
+});
