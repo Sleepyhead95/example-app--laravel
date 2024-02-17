@@ -14,6 +14,7 @@ use App\Models\Listing;
 |
 */
 // we can physically add data to the view by adding a second argument to the view function
+
 // All Listings:
 Route::get('/', function () {
     return view('listings', [

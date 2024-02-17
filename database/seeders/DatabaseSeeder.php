@@ -13,6 +13,7 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         // \App\Models\User::factory(10)->create();
+        // creates 10 dummy users in the DB
 
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',
