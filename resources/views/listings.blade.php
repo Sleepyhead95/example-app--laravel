@@ -1,6 +1,9 @@
 
 {{-- This is what the code looks with .blade: --}}
+@extends('layout') <!-- this is the layout file we want to extend -->
 
+@section('content') <!-- this is the section we want to fill in - must match 
+the 'content' in the layout view -->
 <h1>{{$heading}}</h1>
 {{-- we pass in variables by surrounding them with double curly braces --}}
 
@@ -23,3 +26,4 @@
     <p>No listings found</p>
 @endunless
 <!-- we must also close the loop -->
+@endsection
