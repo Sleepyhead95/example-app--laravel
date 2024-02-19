@@ -4,6 +4,9 @@
 
 @section('content') <!-- this is the section we want to fill in - must match 
 the 'content' in the layout view -->
+@include ('partials._hero')
+ {{-- include means you include another view but you only want it visible on this page, not the layout or any other pages --}}
+@include ('partials._search')
 <div
 class="lg:grid lg:grid-cols-2 gap-4 space-y-4 md:space-y-0 mx-4"
 >
@@ -22,12 +25,12 @@ class="lg:grid lg:grid-cols-2 gap-4 space-y-4 md:space-y-0 mx-4"
         <div class="flex">
             <img
                 class="hidden w-48 mr-6 md:block"
-                src="images/acme.png"
+                src="{{asset('images/no-image.png')}}"
                 alt=""
             />
             <div>
                 <h3 class="text-2xl">
-                    <a href="show.html">{{$listing->title}}</a>
+                    <a href="/listings/{{$listing->id}}">{{$listing->title}}</a>
                 </h3>
                 <div class="text-xl font-bold mb-4">{{$listing->company}}</div>
                 <ul class="flex">
