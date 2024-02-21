@@ -30,4 +30,15 @@ Route::get('/', [ListingController::class, 'index']);
 // Single listing with route model binding:
 Route::get('/listings/{listing}', [ListingController::class, 'show']);
 
-// controllers: 
+// Common Resource Routes (naming conventions):
+// index - show all data
+// show - show single data
+// create - show form to create new data
+// store - store/save new data
+// edit - show form to edit data
+// update - update data
+// destroy - delete data
+
+// can use these names in blade views instead of a random name
+// depending on their functionality
+// so our listings view that shows all listings will be called 'index
