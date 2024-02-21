@@ -15,8 +15,10 @@ class ListingController extends Controller
     // get and show all listings
     public function index()
     {
-
-        return view('listings', [
+        // since we renamed the view from listings to index
+        // we need to reference it correctly
+        // here, index file in the listings folder
+        return view('listings.index', [
             'listings' => Listing::all()
         ]);
     }
@@ -24,7 +26,7 @@ class ListingController extends Controller
     //show single listing
     public function show(Listing $listing)
     {
-        return view('listing', [
+        return view('listings.show', [
             'listing' => $listing
         ]);
     }
