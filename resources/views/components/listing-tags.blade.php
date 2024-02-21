@@ -10,7 +10,7 @@
     // will split the array in tagsCsv into an array of individual tags separated by columns
 @endphp
 
-
+ 
 
 <ul class="flex">
     @foreach ($tags as $tag)

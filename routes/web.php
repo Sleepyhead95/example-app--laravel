@@ -1,7 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use App\Models\Listing;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ListingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,13 +17,7 @@ use App\Models\Listing;
 // we can physically add data to the view by adding a second argument to the view function
 
 // All Listings:
-Route::get('/', function () {
-    return view('listings', [
-        'heading' => 'Latest Listings',
-        'listings' => Listing::all()
-
-    ]);
-});
+Route::get('/', [ListingController::class, 'index']);
 
 // Single Listing:
 // Route::get('/listings/{id}', function ($id) {
@@ -33,8 +28,6 @@ Route::get('/', function () {
 // });
 
 // Single listing with route model binding:
-Route::get('/listings/{listing}', function (Listing $listing) {
-    return view('listing', [
-        'listing' => $listing
-    ]);
-});
+Route::get('/listings/{listing}', [ListingController::class, 'show']);
+
+// controllers: 
