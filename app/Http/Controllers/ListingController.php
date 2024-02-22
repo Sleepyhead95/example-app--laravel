@@ -15,11 +15,19 @@ class ListingController extends Controller
     // get and show all listings
     public function index()
     {
+        // to get the current tag (that was clicked by the user and is 
+        // stored in the query string of the URL)
+        // dd(request('tag'));
+
+
         // since we renamed the view from listings to index
         // we need to reference it correctly
         // here, index file in the listings folder
         return view('listings.index', [
-            'listings' => Listing::all()
+            'listings' => Listing::latest()->filter(request(['tag']))->get()
+            // we can also use ::all() but latest orders our data chronologically
+            // we can add the filter function from out Model to filter through the array of tags
+            // that are saved in our database
         ]);
     }
 

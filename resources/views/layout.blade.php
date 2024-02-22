@@ -51,7 +51,8 @@
     {{-- if you were to move this layout file to the components folder, 
     you could change the @yield to $slot and then, inside the listings blade views,
     use the <x-layout> tag to include the layout file instead of the @extends and @section directives.
-    Makes it a bit simpler. --}}
+    Makes it a bit simpler. 
+    every time you add a new view, you just have to wrap it in the layout component--}}
     </main>
 
         <footer

@@ -32,7 +32,7 @@ Route::get('/listings/{listing}', [ListingController::class, 'show']);
 
 // Common Resource Routes (naming conventions):
 // index - show all data
-// show - show single data
+// show - show single data 
 // create - show form to create new data
 // store - store/save new data
 // edit - show form to edit data
