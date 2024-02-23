@@ -18,7 +18,8 @@ class Listing extends Model
         'website',
         'email',
         'tags',
-        'description'
+        'description',
+        'logo'
     ];
 
     // we can use this to filter the data in our controller

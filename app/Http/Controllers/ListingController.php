@@ -62,6 +62,7 @@ class ListingController extends Controller
             'description' => 'required'
         ]);
 
+
         // for uploading an image:
         // if the request/user input has a file, then we want to store it
         // in the public folder under the logos directory
