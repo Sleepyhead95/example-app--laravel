@@ -9,6 +9,18 @@ class Listing extends Model
 {
     use HasFactory;
 
+    // fillable property is used to specify which fields are allowed to be mass assigned
+    // in order to be input into the database - this is a security feature  
+    protected $fillable = [
+        'title',
+        'company',
+        'location',
+        'website',
+        'email',
+        'tags',
+        'description'
+    ];
+
     // we can use this to filter the data in our controller
     public function scopeFilter($query, array $filters)
     {

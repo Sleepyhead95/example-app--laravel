@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Listing;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Session;
 
 // we use controllers to write the login of the routing 
 // then we can pass the controller to the route, instead of
@@ -44,5 +46,31 @@ class ListingController extends Controller
     public function create()
     {
         return view('listings.create');
+    }
+
+    // store new listing
+    public function store(Request $request)
+    {
+        // form validation for each input field
+        $formFields = $request->validate([
+            'title' => 'required',
+            'company' => ['required', Rule::unique('listings', 'company')],
+            'location' => 'required',
+            'website' => 'required',
+            'email' => ['required', 'email'],
+            'tags' => 'required',
+            'description' => 'required'
+        ]);
+
+        // we take our Listing Model and create a new instance of it
+        // with the form fields input data that we validated
+        Listing::create($formFields);
+
+        // one way to create a flash message:
+        // Session::flash('message', 'Listing created successfully!');
+
+        // ->with() is a method that we can use to create a flash message too - it's a shortcut
+        // but this just fires the message, you have to create it in a view to display it
+        return redirect('/')->with('message', 'Listing created successfully!');
     }
 }

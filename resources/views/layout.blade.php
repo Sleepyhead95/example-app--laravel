@@ -66,5 +66,6 @@
             >Post Job</a
         >
         </footer>
+        @yield('flash-message')
     </body>
 </html>
