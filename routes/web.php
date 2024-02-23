@@ -27,8 +27,7 @@ Route::get('/', [ListingController::class, 'index']);
 //     ]);
 // });
 
-// Single listing with route model binding:
-Route::get('/listings/{listing}', [ListingController::class, 'show']);
+
 
 // Common Resource Routes (naming conventions):
 // index - show all data
@@ -42,3 +41,9 @@ Route::get('/listings/{listing}', [ListingController::class, 'show']);
 // can use these names in blade views instead of a random name
 // depending on their functionality
 // so our listings view that shows all listings will be called 'index
+
+// show create form:
+Route::get('/listings/create', [ListingController::class, 'create']);
+
+// Single listing with route model binding:
+Route::get('/listings/{listing}', [ListingController::class, 'show']);
