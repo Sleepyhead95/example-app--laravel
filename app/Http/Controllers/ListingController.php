@@ -24,10 +24,11 @@ class ListingController extends Controller
         // we need to reference it correctly
         // here, index file in the listings folder
         return view('listings.index', [
-            'listings' => Listing::latest()->filter(request(['tag']))->get()
+            'listings' => Listing::latest()->filter(request(['tag', 'search']))->get()
             // we can also use ::all() but latest orders our data chronologically
             // we can add the filter function from out Model to filter through the array of tags
             // that are saved in our database
+            // the get method will fetch those resutls for us
         ]);
     }
 
