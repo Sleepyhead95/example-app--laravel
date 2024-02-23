@@ -48,5 +48,10 @@ Route::get('/listings/create', [ListingController::class, 'create']);
 // store new listing:
 Route::post('/listings', [ListingController::class, 'store']);
 
+//only temporary for debuggin flash message
+Route::get('/test-session', function () {
+    dd(session()->all());
+});
+
 // Single listing with route model binding:
 Route::get('/listings/{listing}', [ListingController::class, 'show']);
