@@ -26,7 +26,7 @@ class ListingController extends Controller
         // we need to reference it correctly
         // here, index file in the listings folder
         return view('listings.index', [
-            'listings' => Listing::latest()->filter(request(['tag', 'search']))->get()
+            'listings' => Listing::latest()->filter(request(['tag', 'search']))->paginate(6)
             // we can also use ::all() but latest orders our data chronologically
             // we can add the filter function from out Model to filter through the array of tags
             // that are saved in our database
@@ -62,6 +62,13 @@ class ListingController extends Controller
             'description' => 'required'
         ]);
 
+        // for uploading an image:
+        // if the request/user input has a file, then we want to store it
+        // in the public folder under the logos directory
+        // in the DB, you only store the path to the file, not the file itself
+        if ($request->hasFile('logo')) {
+            $formFields['logo'] = $request->file('logo')->store('logos', 'public');
+        }
         // we take our Listing Model and create a new instance of it
         // with the form fields input data that we validated
         Listing::create($formFields);
