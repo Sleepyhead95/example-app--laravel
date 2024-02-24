@@ -81,4 +81,10 @@ class ListingController extends Controller
         // but this just fires the message, you have to create it in a view to display it
         return redirect('/')->with('message', 'Listing created successfully!');
     }
+
+    // show edit form
+    public function edit(Listing $listing)
+    {
+        return view('listings.edit', ['listing' => $listing]);
+    }
 }
