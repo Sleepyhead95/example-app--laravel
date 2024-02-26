@@ -61,8 +61,8 @@ Route::delete('/listings/{listing}', [ListingController::class, 'destroy']);
 // Single listing with route model binding:
 Route::get('/listings/{listing}', [ListingController::class, 'show']);
 
-// show register create form:
+// show register/ create form:
 Route::get('/register', [UserController::class, 'create']);
 
-// create new user
+// create new user and store its data:
 Route::post('/users', [UserController::class, 'store']);
