@@ -39,4 +39,15 @@ class UserController extends Controller
         // redirect to home page after loggin in:
         return redirect('/')->with('message', 'User created and logged in');
     }
+
+    public function logout(Request $request)
+    {
+        // removes user authentication from the current session
+        auth()->logout();
+
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect('/')->with('message', 'You have logged out');
+    }
 }
