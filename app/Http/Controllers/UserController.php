@@ -62,4 +62,23 @@ class UserController extends Controller
     {
         return view('users.login');
     }
+
+    public function authenticate(Request $request)
+    {
+        // we still must validate the form input data:
+        $formFields = $request->validate([
+            'email' => ['required', 'email'],
+            'password' => 'required'
+        ]);
+
+        // if the user is authenticated, the session will be regenerated
+        // that's why we regenerated the token after logging out
+        if (auth()->attempt($formFields)) {
+            $request->session()->regenerate();
+
+            return redirect('/')->with('message', 'You are logged in');
+        }
+
+        return back()->withErrors(['email' => 'Invalid credentials'])->onlyInput('email');
+    }
 }
