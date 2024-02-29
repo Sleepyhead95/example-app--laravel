@@ -65,7 +65,7 @@
                 </li>
                 
                 <li>
-                    <a href="/register" class="hover:text-laravel"
+                    <a href="/login" class="hover:text-laravel"
                         ><i class="fa-solid fa-arrow-right-to-bracket"></i>
                         Login</a
                     >
@@ -96,5 +96,6 @@
         </footer>
         @yield('flash-message')
         @yield ('user')
+        @yield ('login')
     </body>
 </html>
