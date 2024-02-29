@@ -70,6 +70,11 @@ class ListingController extends Controller
         if ($request->hasFile('logo')) {
             $formFields['logo'] = $request->file('logo')->store('logos', 'public');
         }
+
+        // this line is used to attach the user_id to the listing upon creating the listing
+        $formFields['user_id'] = auth()->id();
+
+
         // we take our Listing Model and create a new instance of it
         // with the form fields input data that we validated
         Listing::create($formFields);
