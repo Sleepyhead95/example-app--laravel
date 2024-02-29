@@ -44,34 +44,42 @@ Route::get('/', [ListingController::class, 'index']);
 // so our listings view that shows all listings will be called 'index
 
 // show create form:
-Route::get('/listings/create', [ListingController::class, 'create']);
+Route::get('/listings/create', [ListingController::class, 'create'])
+    ->middleware('auth');
 
 // store new listing:
-Route::post('/listings', [ListingController::class, 'store']);
+Route::post('/listings', [ListingController::class, 'store'])->middleware('auth');
 
 // show edit form:
-Route::get('/listings/{listing}/edit', [ListingController::class, 'edit']);
+Route::get('/listings/{listing}/edit', [ListingController::class, 'edit'])->middleware('auth');
 
 // update edited form:
-Route::put('/listings/{listing}', [ListingController::class, 'update']);
+Route::put('/listings/{listing}', [ListingController::class, 'update'])->middleware('auth');
 
 // delete listing:
-Route::delete('/listings/{listing}', [ListingController::class, 'destroy']);
+Route::delete('/listings/{listing}', [ListingController::class, 'destroy'])->middleware('auth');
 
 // Single listing with route model binding:
 Route::get('/listings/{listing}', [ListingController::class, 'show']);
 
 // show register/ create form:
-Route::get('/register', [UserController::class, 'create']);
+Route::get('/register', [UserController::class, 'create'])->middleware('guest');
 
 // create new user and store its data:
 Route::post('/users', [UserController::class, 'store']);
 
 // log user out:
-Route::post('/logout', [UserController::class, 'logout']);
+Route::post('/logout', [UserController::class, 'logout'])->middleware('auth');
 
 // show login form:
-Route::get('/login', [UserController::class, 'login']);
+Route::get('/login', [UserController::class, 'login'])->name('login')->middleware('guest');
 
 // log user in:
 Route::post('/users/authenticate', [UserController::class, 'authenticate']);
+
+// middleware('auth') function - checks if user is authenticated
+// if not, it redirects to the login page - this is based on the 
+// Authenticate controller in the middleware directory (predefined)
+
+// middleware('guest') function - checks if user is not authenticated
+// and displays content accordingly
