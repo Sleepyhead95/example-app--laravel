@@ -97,5 +97,6 @@
         @yield('flash-message')
         @yield ('user')
         @yield ('login')
+        @yield ('manage')
     </body>
 </html>

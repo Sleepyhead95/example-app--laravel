@@ -19,7 +19,8 @@ class Listing extends Model
         'email',
         'tags',
         'description',
-        'logo'
+        'logo',
+        'user_id'
     ];
 
     // we can use this to filter the data in our controller
